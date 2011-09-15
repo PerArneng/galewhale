@@ -7,8 +7,11 @@ namespace scalebit { namespace http {
     class HttpServer {
 
       public:
-        HttpServer(int port);
+
+        HttpServer(int port, int numThreads);
+
         ~HttpServer();
+
         void start();
 
     };

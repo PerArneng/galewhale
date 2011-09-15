@@ -6,7 +6,7 @@ using namespace std;
 
 namespace scalebit { namespace http {
 
-HttpServer::HttpServer(int port) {
+HttpServer::HttpServer(int port, int numThreads) {
   cout << "starting server on port: " << port << endl;
 }
 
