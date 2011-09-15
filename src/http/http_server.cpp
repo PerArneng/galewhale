@@ -19,7 +19,9 @@ HttpServer::~HttpServer() {
 
 void HttpServer::start() {
   cout << "starting" << endl;
-  listen_port(this->port);
+  listen_port(this->port, [] (int* socket) {
+    cout << "accepted! > " << *socket << endl;
+  });
 }
 
 } } // namespace scalebit::http

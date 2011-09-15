@@ -4,7 +4,7 @@
 
 namespace scalebit { namespace http {
 
-void listen_port(int port);
+void listen_port(int port, void (*handler)(int*));
 
 } }
 

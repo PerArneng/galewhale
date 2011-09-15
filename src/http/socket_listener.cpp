@@ -11,7 +11,7 @@
 
 namespace scalebit { namespace http {
 
-void listen_port(int port) {
+void listen_port(int port,  void (*handler)(int*)) {
 
   int host_port = port;
 
@@ -63,7 +63,7 @@ void listen_port(int port) {
     csock = (int*)malloc(sizeof(int));
     if((*csock = accept( hsock, (sockaddr*)&sadr, &addr_size))!= -1){
         printf("-\nReceived %s\n",inet_ntoa(sadr.sin_addr));
-        
+        handler((int*)csock);
     }
     else{
         fprintf(stderr, "Error accepting %d\n", errno);
