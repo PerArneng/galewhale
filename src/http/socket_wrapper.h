@@ -11,16 +11,19 @@ class SocketWrapper {
 
   private:
     int* socket;
+    std::string* address;
 
   public:
-    SocketWrapper(int* socket);
+    SocketWrapper(int* socket, std::string* address);
   
     int* get_socket();
+  
+    std::string* get_address();
 
     ~SocketWrapper();
 
-  typedef std::shared_ptr<SocketWrapper> ptr;
-  typedef std::function<void (SocketWrapper::ptr)> acceptor;
+    typedef std::shared_ptr<SocketWrapper> ptr;
+    typedef std::function<void (SocketWrapper::ptr)> acceptor;
 
 };
 

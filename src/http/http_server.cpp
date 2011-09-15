@@ -22,7 +22,8 @@ void HttpServer::start() {
   cout << "starting" << endl;
 
   listen_port(this->port, [] (SocketWrapper::ptr socket) {
-    cout << "accepted! > " << *socket->get_socket() << endl;
+    cout << "accepted! > " << *socket->get_socket() << 
+         " from: " << *socket->get_address() << endl;
   });
 
 }

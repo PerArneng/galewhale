@@ -65,8 +65,8 @@ void listen_port(int port, SocketWrapper::acceptor acceptor) {
     printf("waiting for a connection\n");
     csock = (int*)malloc(sizeof(int));
     if((*csock = accept( hsock, (sockaddr*)&sadr, &addr_size))!= -1){
-        printf("-\nReceived %s\n",inet_ntoa(sadr.sin_addr));
-        acceptor(SocketWrapper::ptr(new SocketWrapper(csock)));
+        auto address = new std::string(inet_ntoa(sadr.sin_addr));
+        acceptor(SocketWrapper::ptr(new SocketWrapper(csock, address)));
     }
     else{
         fprintf(stderr, "Error accepting %d\n", errno);
