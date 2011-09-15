@@ -14,21 +14,7 @@
 
 namespace scalebit { namespace http {
 
-Socket::Socket(int* socket) {
-  this->socket = socket;
-}
-
-int* Socket::get_socket() {
-  return this->socket;
-}
-
-Socket::~Socket() {
-  std::cout << "destroying socket" << std::endl;
-  close(*this->socket);
-  free(this->socket);
-}
-
-void listen_port(int port, Socket::acceptor acceptor) {
+void listen_port(int port, SocketWrapper::acceptor acceptor) {
 
   int host_port = port;
 
@@ -80,7 +66,7 @@ void listen_port(int port, Socket::acceptor acceptor) {
     csock = (int*)malloc(sizeof(int));
     if((*csock = accept( hsock, (sockaddr*)&sadr, &addr_size))!= -1){
         printf("-\nReceived %s\n",inet_ntoa(sadr.sin_addr));
-        acceptor(Socket::ptr(new Socket(csock)));
+        acceptor(SocketWrapper::ptr(new SocketWrapper(csock)));
     }
     else{
         fprintf(stderr, "Error accepting %d\n", errno);

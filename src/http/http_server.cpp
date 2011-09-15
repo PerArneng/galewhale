@@ -21,7 +21,7 @@ void HttpServer::start() {
 
   cout << "starting" << endl;
 
-  listen_port(this->port, [] (Socket::ptr socket) {
+  listen_port(this->port, [] (SocketWrapper::ptr socket) {
     cout << "accepted! > " << *socket->get_socket() << endl;
   });
 
