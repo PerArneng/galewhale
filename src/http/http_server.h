@@ -8,11 +8,15 @@ namespace scalebit { namespace http {
 
       public:
 
-        HttpServer(int port, int numThreads);
+        HttpServer(int port, int num_threads);
 
         ~HttpServer();
 
         void start();
+
+      private:
+        int port;
+        int num_threads;
 
     };
 
