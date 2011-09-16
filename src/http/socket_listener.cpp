@@ -1,15 +1,16 @@
 #include <fcntl.h>
-#include <string.h>
-#include <stdlib.h>
-#include <errno.h>
-#include <stdio.h>
 #include <netinet/in.h>
 #include <resolv.h>
 #include <sys/socket.h>
 #include <arpa/inet.h>
 #include <unistd.h>
 
+#include <cstring>
+#include <cstdlib>
+#include <cerrno>
+#include <cstdio>
 #include <iostream>
+
 #include <socket_listener.h>
 
 namespace scalebit { namespace http {
