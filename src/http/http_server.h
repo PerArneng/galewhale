@@ -2,6 +2,8 @@
 #ifndef _HTTP_SERVER_H
 #define _HTTP_SERVER_H
 
+#include <socket_wrapper.h>
+
 namespace scalebit { namespace http {
 
     class HttpServer {
@@ -14,10 +16,12 @@ namespace scalebit { namespace http {
 
         void start();
 
+        void shutdown();
+
       private:
         int port;
         int num_threads;
-
+        SocketWrapper::ptr server_socket;
     };
 
 } }

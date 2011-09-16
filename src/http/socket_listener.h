@@ -9,7 +9,7 @@
 
 namespace scalebit { namespace http {
 
-void listen_port(int port, SocketWrapper::acceptor acceptor);
+void listen_port(SocketWrapper::ptr server_socket, int port, SocketWrapper::acceptor acceptor);
 
 } }
 

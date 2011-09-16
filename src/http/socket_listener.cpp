@@ -14,7 +14,7 @@
 
 namespace scalebit { namespace http {
 
-void listen_port(int port, SocketWrapper::acceptor acceptor) {
+void listen_port(SocketWrapper::ptr server_socket, int port, SocketWrapper::acceptor acceptor) {
 
   int host_port = port;
 
@@ -61,6 +61,8 @@ void listen_port(int port, SocketWrapper::acceptor acceptor) {
 
   addr_size = sizeof(sockaddr_in);
   
+  *server_socket->get_socket() = hsock;
+ 
   while(true){
     printf("waiting for a connection\n");
     csock = (int*)malloc(sizeof(int));
@@ -70,6 +72,7 @@ void listen_port(int port, SocketWrapper::acceptor acceptor) {
     }
     else{
         fprintf(stderr, "Error accepting %d\n", errno);
+        goto FINISH;
     }
   }
     
