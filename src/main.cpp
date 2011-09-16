@@ -12,13 +12,13 @@ int main() {
 
   cout << "GALEWHALE" << endl;
   
-  struct sigaction sigIntHandler;
-  sigIntHandler.sa_handler = [] (int signal) {
+  struct sigaction sig_handler;
+  sig_handler.sa_handler = [] (int signal) {
     server.shutdown();
   };
-  sigemptyset(&sigIntHandler.sa_mask);
-  sigIntHandler.sa_flags = 0;
-  sigaction(SIGINT, &sigIntHandler, NULL);
+  sigemptyset(&sig_handler.sa_mask);
+  sig_handler.sa_flags = 0;
+  sigaction(SIGINT, &sig_handler, NULL);
 
   server.start();
 
